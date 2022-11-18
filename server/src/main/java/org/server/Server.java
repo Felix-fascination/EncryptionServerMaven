@@ -60,6 +60,7 @@ public class Server {
         out.write("You got the public key to encrypt the message\n");
         out.write("KeyPair\n");
         out.flush();
+        Thread.sleep(500);
         ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
         oos.writeObject(keyPair.getPublic());
         out.flush();
@@ -85,6 +86,7 @@ public class Server {
         SecretKey secretKey = keyGenerator.generateKey();
         out.write("SecretKey\n");
         out.flush();
+        Thread.sleep(500);
         ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
         oos.writeObject(secretKey);
         out.flush();

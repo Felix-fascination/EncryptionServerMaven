@@ -22,9 +22,9 @@ public class Client {
                     String wordsToHandle = in.readLine();
                     if (wordsToHandle.equalsIgnoreCase("SecretKey")){
                         ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-                        SecretKey secretKey = (SecretKey) ois.readObject();
+                        Key key = (Key) ois.readObject();
                         Cipher encryptCipher = Cipher.getInstance("AES");
-                        encryptCipher.init(Cipher.ENCRYPT_MODE, secretKey);
+                        encryptCipher.init(Cipher.ENCRYPT_MODE, key);
                         System.out.println("Write your message");
                         String bytes = Base64.getEncoder()
                                 .encodeToString(encryptCipher.doFinal(consoleReader.readLine().getBytes(StandardCharsets.UTF_8)));
